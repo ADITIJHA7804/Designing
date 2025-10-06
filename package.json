@@ -1,0 +1,36 @@
+{
+  "name": "phishing-email-training-simulation",
+  "version": "1.0.0",
+  "description": "An interactive phishing email training simulation for cybersecurity education",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "phishing",
+    "cybersecurity",
+    "training",
+    "simulation",
+    "education",
+    "security",
+    "email",
+    "interactive"
+  ],
+  "author": "Phishing Training Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/phishing-email-training-simulation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/phishing-email-training-simulation/issues"
+  },
+  "homepage": "https://github.com/your-username/phishing-email-training-simulation#readme",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
