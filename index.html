@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Email Training Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🔍 Phishing Email Detective</h1>
+            <p class="subtitle">Train your cybersecurity skills by spotting phishing emails!</p>
+        </header>
+
+        <div class="game-stats">
+            <div class="stat">
+                <span class="stat-label">Level:</span>
+                <span class="stat-value" id="level">1</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Score:</span>
+                <span class="stat-value" id="score">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Correct:</span>
+                <span class="stat-value" id="correct">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Streak:</span>
+                <span class="stat-value" id="streak">0</span>
+            </div>
+        </div>
+
+        <div class="email-container">
+            <div class="email-header">
+                <div class="email-info">
+                    <div class="sender-info">
+                        <span class="sender-name" id="sender-name">Loading...</span>
+                        <span class="sender-email" id="sender-email">loading@email.com</span>
+                    </div>
+                    <div class="email-meta">
+                        <span class="timestamp" id="timestamp">Just now</span>
+                        <span class="email-size" id="email-size">2.3 KB</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="email-subject">
+                <h2 id="email-subject">Loading email...</h2>
+            </div>
+
+            <div class="email-body" id="email-body">
+                <p>Loading email content...</p>
+            </div>
+
+            <div class="email-actions">
+                <button class="btn btn-phishing" id="btn-phishing">
+                    🚨 This is PHISHING!
+                </button>
+                <button class="btn btn-legitimate" id="btn-legitimate">
+                    ✅ This is LEGITIMATE
+                </button>
+                <button class="btn btn-unsure" id="btn-unsure">
+                    🤔 I'm not sure
+                </button>
+            </div>
+        </div>
+
+        <div class="feedback-container" id="feedback-container" style="display: none;">
+            <div class="feedback-content">
+                <h3 id="feedback-title">Great job!</h3>
+                <p id="feedback-message">You correctly identified this email.</p>
+                <div class="explanation" id="explanation">
+                    <h4>Why is this email <span id="email-type">phishing</span>?</h4>
+                    <ul id="explanation-points">
+                        <li>Loading explanation...</li>
+                    </ul>
+                </div>
+                <button class="btn btn-next" id="btn-next">Next Email</button>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <p class="progress-text" id="progress-text">Email 1 of 10</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
