@@ -82,8 +82,14 @@ server.listen(PORT, '0.0.0.0', () => {
 // Handle server errors
 server.on('error', (err) => {
     if (err.code === 'EADDRINUSE') {
-        console.log(`❌ Port ${PORT} is already in use. Trying port ${PORT + 1}...`);
-        server.listen(PORT + 1, '0.0.0.0');
+        const newPort = parseInt(PORT) + 1;
+        if (newPort < 65536) {
+            console.log(`❌ Port ${PORT} is already in use. Trying port ${newPort}...`);
+            server.listen(newPort, '0.0.0.0');
+        } else {
+            console.error('❌ No available ports found. Please stop other servers or try a different port.');
+            process.exit(1);
+        }
     } else {
         console.error('Server error:', err);
     }
