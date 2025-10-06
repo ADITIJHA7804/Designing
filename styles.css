@@ -1,0 +1,370 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.game-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background: #f8f9fa;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #495057;
+}
+
+.email-container {
+    background: white;
+    border: 1px solid #e9ecef;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.email-header {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.email-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sender-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.sender-name {
+    font-weight: bold;
+    color: #495057;
+    font-size: 1rem;
+}
+
+.sender-email {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.email-meta {
+    text-align: right;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.email-subject {
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.email-subject h2 {
+    color: #495057;
+    font-size: 1.3rem;
+}
+
+.email-body {
+    padding: 20px;
+    line-height: 1.6;
+    color: #495057;
+    min-height: 200px;
+}
+
+.email-actions {
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-phishing {
+    background: linear-gradient(135deg, #ff4757, #ff3838);
+    color: white;
+}
+
+.btn-phishing:hover {
+    background: linear-gradient(135deg, #ff3742, #ff2f2f);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+}
+
+.btn-legitimate {
+    background: linear-gradient(135deg, #2ed573, #1dd1a1);
+    color: white;
+}
+
+.btn-legitimate:hover {
+    background: linear-gradient(135deg, #26d068, #17c096);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46, 213, 115, 0.4);
+}
+
+.btn-unsure {
+    background: linear-gradient(135deg, #ffa502, #ff9ff3);
+    color: white;
+}
+
+.btn-unsure:hover {
+    background: linear-gradient(135deg, #ff9500, #ff8fe2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 165, 2, 0.4);
+}
+
+.btn-next {
+    background: linear-gradient(135deg, #3742fa, #2f3542);
+    color: white;
+    margin-top: 20px;
+}
+
+.btn-next:hover {
+    background: linear-gradient(135deg, #2f35ee, #262a36);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(55, 66, 250, 0.4);
+}
+
+.feedback-container {
+    margin: 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.feedback-content {
+    padding: 30px;
+    text-align: center;
+}
+
+.feedback-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #2f3542;
+}
+
+.feedback-content p {
+    font-size: 1.1rem;
+    color: #57606f;
+    margin-bottom: 20px;
+}
+
+.explanation {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #3742fa;
+}
+
+.explanation h4 {
+    color: #2f3542;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.explanation-points {
+    list-style: none;
+    padding: 0;
+}
+
+.explanation-points li {
+    padding: 8px 0;
+    position: relative;
+    padding-left: 25px;
+    color: #57606f;
+}
+
+.explanation-points li:before {
+    content: "💡";
+    position: absolute;
+    left: 0;
+    top: 8px;
+}
+
+.progress-container {
+    margin: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2ed573, #1dd1a1);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    text-align: center;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+        transform: translate3d(0,0,0);
+    }
+    40%, 43% {
+        transform: translate3d(0, -20px, 0);
+    }
+    70% {
+        transform: translate3d(0, -10px, 0);
+    }
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+.correct-animation {
+    animation: bounce 0.6s ease-in-out;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        border-radius: 10px;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .game-stats {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .email-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+/* Email content styling */
+.suspicious {
+    color: #ff4757;
+    font-weight: bold;
+}
+
+.urgent {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.legitimate {
+    color: #2ed573;
+}
+
+/* Loading animation */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
