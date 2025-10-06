@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Phishing Email Training Simulation - Learn to spot phishing emails in a fun inbox game." />
+  <title>Phish or Safe? Inbox Challenge</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <div class="branding">
+        <span class="logo">🕵️‍♀️</span>
+        <h1>Phish or Safe?</h1>
+      </div>
+      <div class="header-actions">
+        <button id="btn-restart" class="secondary" title="Restart round">↻ Restart</button>
+        <button id="btn-theme" class="secondary" title="Toggle theme">🌗 Theme</button>
+      </div>
+    </header>
+
+    <section class="app-main">
+      <aside class="inbox-panel">
+        <div class="inbox-toolbar">
+          <input id="search" placeholder="Search inbox (sender, subject)" aria-label="Search inbox" />
+          <div class="stats">
+            <span id="score-display">Score: 0</span>
+            <span id="progress-display">0 / 0</span>
+          </div>
+        </div>
+        <ul id="inbox" class="inbox-list" aria-label="Inbox list"></ul>
+      </aside>
+
+      <main class="reader-panel">
+        <div id="email-meta" class="email-meta">
+          <div class="from-line">
+            <span id="from-avatar" class="avatar" aria-hidden="true">📧</span>
+            <div class="from-text">
+              <div><strong id="from-name">—</strong> <span id="from-email" class="muted">—</span></div>
+              <div class="muted" id="email-date">—</div>
+            </div>
+          </div>
+          <h2 id="email-subject" class="subject">Select an email to begin</h2>
+        </div>
+
+        <article id="email-body" class="email-body" aria-live="polite"></article>
+
+        <div class="actions">
+          <button id="btn-hint" class="secondary" title="Reveal a clue">💡 Hint</button>
+          <button id="btn-explain" class="secondary" title="Explain this email">❓ Explain</button>
+          <div class="spacer"></div>
+          <button id="btn-phish" class="danger" title="Mark as phishing">🚩 Report Phish</button>
+          <button id="btn-safe" class="primary" title="Mark as safe">✅ Trust</button>
+        </div>
+
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+        <div id="clues" class="clues"></div>
+      </main>
+    </section>
+
+    <section id="summary" class="summary hidden" aria-live="polite"></section>
+  </div>
+
+  <canvas id="confetti-canvas" class="confetti hidden" aria-hidden="true"></canvas>
+
+  <script src="app.js"></script>
+</body>
+</html>
