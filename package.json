@@ -4,9 +4,10 @@
   "description": "An interactive phishing email training simulation for cybersecurity education",
   "main": "index.html",
   "scripts": {
-    "start": "python3 -m http.server 8000",
-    "dev": "python3 -m http.server 8000",
-    "serve": "python3 -m http.server 8000"
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "node server.js",
+    "python": "python3 -m http.server 8000"
   },
   "keywords": [
     "phishing",
