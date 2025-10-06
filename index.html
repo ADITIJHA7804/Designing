@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard Training - Interactive Email Security Simulation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-shield-alt"></i> PhishGuard Training</h1>
+                <div class="score-display">
+                    <div class="score-item">
+                        <span class="label">Score:</span>
+                        <span id="score">0</span>
+                    </div>
+                    <div class="score-item">
+                        <span class="label">Level:</span>
+                        <span id="level">Beginner</span>
+                    </div>
+                    <div class="score-item">
+                        <span class="label">Progress:</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Screen -->
+            <div id="welcome-screen" class="screen active">
+                <div class="welcome-content">
+                    <div class="hero-section">
+                        <i class="fas fa-envelope-open-text hero-icon"></i>
+                        <h2>Welcome to PhishGuard Training!</h2>
+                        <p>Learn to identify phishing emails through interactive simulation. Test your skills and protect yourself from cyber threats!</p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-gamepad"></i>
+                            <h3>Gamified Learning</h3>
+                            <p>Earn points and unlock achievements as you learn</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-brain"></i>
+                            <h3>Real Scenarios</h3>
+                            <p>Practice with realistic phishing email examples</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Track Progress</h3>
+                            <p>Monitor your improvement over time</p>
+                        </div>
+                    </div>
+                    
+                    <button class="start-btn" onclick="startTraining()">
+                        <i class="fas fa-play"></i> Start Training
+                    </button>
+                </div>
+            </div>
+
+            <!-- Training Screen -->
+            <div id="training-screen" class="screen">
+                <div class="training-content">
+                    <div class="email-counter">
+                        <span>Email <span id="current-email">1</span> of <span id="total-emails">10</span></span>
+                    </div>
+                    
+                    <div class="email-container">
+                        <div class="email-header">
+                            <div class="email-meta">
+                                <div class="from-section">
+                                    <strong>From:</strong> <span id="email-from"></span>
+                                </div>
+                                <div class="to-section">
+                                    <strong>To:</strong> <span id="email-to"></span>
+                                </div>
+                                <div class="subject-section">
+                                    <strong>Subject:</strong> <span id="email-subject"></span>
+                                </div>
+                                <div class="date-section">
+                                    <strong>Date:</strong> <span id="email-date"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="email-body" id="email-body">
+                            <!-- Email content will be loaded here -->
+                        </div>
+                        
+                        <div class="email-attachments" id="email-attachments" style="display: none;">
+                            <h4><i class="fas fa-paperclip"></i> Attachments:</h4>
+                            <div class="attachments-list" id="attachments-list"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="decision-panel">
+                        <h3>Is this email legitimate or phishing?</h3>
+                        <div class="decision-buttons">
+                            <button class="decision-btn legitimate" onclick="makeDecision('legitimate')">
+                                <i class="fas fa-check-circle"></i>
+                                Legitimate Email
+                            </button>
+                            <button class="decision-btn phishing" onclick="makeDecision('phishing')">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Phishing Email
+                            </button>
+                        </div>
+                        
+                        <div class="hint-section">
+                            <button class="hint-btn" onclick="showHint()" id="hint-btn">
+                                <i class="fas fa-lightbulb"></i> Need a Hint?
+                            </button>
+                            <div class="hint-content" id="hint-content" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="results-screen" class="screen">
+                <div class="results-content">
+                    <div class="result-header">
+                        <i class="fas fa-trophy result-icon"></i>
+                        <h2>Training Complete!</h2>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="final-score">0</div>
+                            <div class="stat-label">Final Score</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="correct-answers">0</div>
+                            <div class="stat-label">Correct Answers</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="accuracy-percentage">0%</div>
+                            <div class="stat-label">Accuracy</div>
+                        </div>
+                    </div>
+                    
+                    <div class="achievements" id="achievements">
+                        <h3>Achievements Unlocked</h3>
+                        <div class="achievements-list" id="achievements-list"></div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="action-btn primary" onclick="restartTraining()">
+                            <i class="fas fa-redo"></i> Try Again
+                        </button>
+                        <button class="action-btn secondary" onclick="showTips()">
+                            <i class="fas fa-book"></i> Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Screen -->
+            <div id="tips-screen" class="screen">
+                <div class="tips-content">
+                    <h2><i class="fas fa-shield-alt"></i> Phishing Protection Tips</h2>
+                    
+                    <div class="tips-grid">
+                        <div class="tip-card">
+                            <i class="fas fa-eye"></i>
+                            <h3>Check the Sender</h3>
+                            <p>Verify the sender's email address. Phishers often use similar-looking domains or misspelled company names.</p>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <i class="fas fa-link"></i>
+                            <h3>Hover Over Links</h3>
+                            <p>Before clicking, hover over links to see where they actually lead. Suspicious URLs are red flags.</p>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <h3>Urgency Tactics</h3>
+                            <p>Be wary of emails creating false urgency like "Act now!" or "Account will be closed!"</p>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <i class="fas fa-spell-check"></i>
+                            <h3>Grammar & Spelling</h3>
+                            <p>Professional organizations rarely send emails with poor grammar or spelling mistakes.</p>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <i class="fas fa-user-secret"></i>
+                            <h3>Personal Information</h3>
+                            <p>Legitimate companies never ask for passwords, SSN, or credit card info via email.</p>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <i class="fas fa-paperclip"></i>
+                            <h3>Suspicious Attachments</h3>
+                            <p>Be cautious with unexpected attachments, especially .exe, .zip, or .scr files.</p>
+                        </div>
+                    </div>
+                    
+                    <button class="back-btn" onclick="showWelcome()">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Feedback Modal -->
+        <div id="feedback-modal" class="modal">
+            <div class="modal-content">
+                <div class="feedback-header">
+                    <i class="feedback-icon"></i>
+                    <h3 class="feedback-title"></h3>
+                </div>
+                <div class="feedback-body">
+                    <p class="feedback-message"></p>
+                    <div class="feedback-explanation"></div>
+                </div>
+                <button class="continue-btn" onclick="nextEmail()">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
