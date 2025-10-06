@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Email Training Simulation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-shield-alt"></i> Phishing Email Training</h1>
+                <p>Test your cybersecurity skills and learn to identify phishing emails!</p>
+            </div>
+        </header>
+
+        <!-- Game Stats -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <i class="fas fa-trophy"></i>
+                <span class="stat-label">Score</span>
+                <span class="stat-value" id="score">0</span>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-envelope"></i>
+                <span class="stat-label">Emails</span>
+                <span class="stat-value" id="email-count">0/10</span>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle"></i>
+                <span class="stat-label">Correct</span>
+                <span class="stat-value" id="correct-count">0</span>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-times-circle"></i>
+                <span class="stat-label">Wrong</span>
+                <span class="stat-value" id="wrong-count">0</span>
+            </div>
+        </div>
+
+        <!-- Difficulty Selection -->
+        <div class="difficulty-selector" id="difficulty-selector">
+            <h2>Choose Difficulty Level</h2>
+            <div class="difficulty-options">
+                <button class="difficulty-btn" data-level="easy">
+                    <i class="fas fa-seedling"></i>
+                    <span>Easy</span>
+                    <small>Basic phishing patterns</small>
+                </button>
+                <button class="difficulty-btn" data-level="medium">
+                    <i class="fas fa-fire"></i>
+                    <span>Medium</span>
+                    <small>Moderate sophistication</small>
+                </button>
+                <button class="difficulty-btn" data-level="hard">
+                    <i class="fas fa-skull"></i>
+                    <span>Hard</span>
+                    <small>Advanced techniques</small>
+                </button>
+            </div>
+        </div>
+
+        <!-- Game Area -->
+        <div class="game-area" id="game-area" style="display: none;">
+            <!-- Email Display -->
+            <div class="email-container">
+                <div class="email-header">
+                    <div class="email-meta">
+                        <span class="sender" id="sender">From: Loading...</span>
+                        <span class="subject" id="subject">Subject: Loading...</span>
+                        <span class="date" id="date">Date: Loading...</span>
+                    </div>
+                </div>
+                <div class="email-body" id="email-body">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading email...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="action-btn phishing-btn" id="phishing-btn">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    This is Phishing
+                </button>
+                <button class="action-btn legitimate-btn" id="legitimate-btn">
+                    <i class="fas fa-check-circle"></i>
+                    This is Legitimate
+                </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-text" id="progress-text">0% Complete</span>
+            </div>
+        </div>
+
+        <!-- Results Modal -->
+        <div class="modal" id="results-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-title">Game Complete!</h2>
+                    <button class="close-btn" id="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="final-stats">
+                        <div class="final-stat">
+                            <i class="fas fa-trophy"></i>
+                            <span class="final-score" id="final-score">0</span>
+                            <span class="final-label">Final Score</span>
+                        </div>
+                        <div class="final-stat">
+                            <i class="fas fa-percentage"></i>
+                            <span class="final-accuracy" id="final-accuracy">0%</span>
+                            <span class="final-label">Accuracy</span>
+                        </div>
+                    </div>
+                    <div class="performance-message" id="performance-message">
+                        <!-- Performance message will be inserted here -->
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn-primary" id="play-again">Play Again</button>
+                        <button class="btn-secondary" id="change-difficulty">Change Difficulty</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feedback Modal -->
+        <div class="modal" id="feedback-modal">
+            <div class="modal-content feedback-content">
+                <div class="modal-header">
+                    <h2 id="feedback-title">Result</h2>
+                    <button class="close-btn" id="close-feedback">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="feedback-icon" id="feedback-icon">
+                        <!-- Icon will be inserted here -->
+                    </div>
+                    <div class="feedback-message" id="feedback-message">
+                        <!-- Message will be inserted here -->
+                    </div>
+                    <div class="explanation" id="explanation">
+                        <!-- Explanation will be inserted here -->
+                    </div>
+                    <button class="btn-primary" id="next-email">Next Email</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
