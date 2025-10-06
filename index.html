@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard Academy - Email Security Training</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <h1>PhishGuard Academy</h1>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-label">Score</span>
+                        <span class="stat-value" id="score">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Level</span>
+                        <span class="stat-value" id="level">1</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Streak</span>
+                        <span class="stat-value" id="streak">0</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Game Area -->
+        <main class="main-content">
+            <!-- Welcome Screen -->
+            <div id="welcome-screen" class="screen active">
+                <div class="welcome-content">
+                    <div class="welcome-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h2>Welcome to PhishGuard Academy!</h2>
+                    <p>Test your email security skills and learn to identify phishing attempts. Can you spot the dangerous emails?</p>
+                    <div class="difficulty-selector">
+                        <h3>Choose Difficulty:</h3>
+                        <div class="difficulty-options">
+                            <button class="difficulty-btn" data-level="beginner">
+                                <i class="fas fa-seedling"></i>
+                                <span>Beginner</span>
+                                <small>Easy to spot</small>
+                            </button>
+                            <button class="difficulty-btn" data-level="intermediate">
+                                <i class="fas fa-fire"></i>
+                                <span>Intermediate</span>
+                                <small>Moderate challenge</small>
+                            </button>
+                            <button class="difficulty-btn" data-level="expert">
+                                <i class="fas fa-crown"></i>
+                                <span>Expert</span>
+                                <small>Very tricky</small>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="start-game" class="start-btn" disabled>
+                        <i class="fas fa-play"></i>
+                        Start Training
+                    </button>
+                </div>
+            </div>
+
+            <!-- Game Screen -->
+            <div id="game-screen" class="screen">
+                <div class="game-header">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="game-stats">
+                        <span>Email <span id="current-email">1</span> of <span id="total-emails">10</span></span>
+                    </div>
+                </div>
+
+                <div class="email-container">
+                    <div class="email-header">
+                        <div class="email-meta">
+                            <div class="sender-info">
+                                <div class="sender-avatar" id="sender-avatar">?</div>
+                                <div class="sender-details">
+                                    <div class="sender-name" id="sender-name">Loading...</div>
+                                    <div class="sender-email" id="sender-email">Loading...</div>
+                                </div>
+                            </div>
+                            <div class="email-time" id="email-time">Loading...</div>
+                        </div>
+                        <div class="email-subject" id="email-subject">Loading...</div>
+                    </div>
+                    
+                    <div class="email-body" id="email-body">
+                        <div class="loading-spinner">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Loading email...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="action-btn phishing-btn" id="phishing-btn">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>This is Phishing</span>
+                    </button>
+                    <button class="action-btn legitimate-btn" id="legitimate-btn">
+                        <i class="fas fa-check-circle"></i>
+                        <span>This is Legitimate</span>
+                    </button>
+                </div>
+
+                <div class="hint-section">
+                    <button class="hint-btn" id="hint-btn">
+                        <i class="fas fa-lightbulb"></i>
+                        Get Hint (-10 points)
+                    </button>
+                    <div class="hint-content" id="hint-content" style="display: none;">
+                        <p id="hint-text"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="results-screen" class="screen">
+                <div class="results-content">
+                    <div class="result-icon" id="result-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2 id="result-title">Correct!</h2>
+                    <p id="result-message">Great job! You identified this email correctly.</p>
+                    
+                    <div class="explanation" id="explanation">
+                        <h3>Why this email is <span id="explanation-type">phishing</span>:</h3>
+                        <ul id="explanation-list"></ul>
+                    </div>
+
+                    <div class="score-breakdown">
+                        <div class="score-item">
+                            <span>Base Score:</span>
+                            <span id="base-score">+10</span>
+                        </div>
+                        <div class="score-item">
+                            <span>Streak Bonus:</span>
+                            <span id="streak-bonus">+0</span>
+                        </div>
+                        <div class="score-item">
+                            <span>Hint Penalty:</span>
+                            <span id="hint-penalty">-0</span>
+                        </div>
+                        <div class="score-item total">
+                            <span>Total:</span>
+                            <span id="total-score">+10</span>
+                        </div>
+                    </div>
+
+                    <button class="next-btn" id="next-btn">
+                        <i class="fas fa-arrow-right"></i>
+                        Next Email
+                    </button>
+                </div>
+            </div>
+
+            <!-- Final Results Screen -->
+            <div id="final-results-screen" class="screen">
+                <div class="final-results-content">
+                    <div class="final-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h2>Training Complete!</h2>
+                    <div class="final-stats">
+                        <div class="final-stat">
+                            <span class="final-stat-label">Final Score</span>
+                            <span class="final-stat-value" id="final-score">0</span>
+                        </div>
+                        <div class="final-stat">
+                            <span class="final-stat-label">Accuracy</span>
+                            <span class="final-stat-value" id="final-accuracy">0%</span>
+                        </div>
+                        <div class="final-stat">
+                            <span class="final-stat-label">Max Streak</span>
+                            <span class="final-stat-value" id="max-streak">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="achievements" id="achievements">
+                        <h3>Achievements Unlocked:</h3>
+                        <div class="achievement-list" id="achievement-list"></div>
+                    </div>
+
+                    <div class="final-actions">
+                        <button class="restart-btn" id="restart-btn">
+                            <i class="fas fa-redo"></i>
+                            Try Again
+                        </button>
+                        <button class="new-difficulty-btn" id="new-difficulty-btn">
+                            <i class="fas fa-cog"></i>
+                            Change Difficulty
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 PhishGuard Academy - Learn to stay safe online!</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
